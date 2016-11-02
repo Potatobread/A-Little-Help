@@ -1,0 +1,29 @@
+O PROBLEMA É SÓ NA IMPRESSÃO DA PRIMEIRA NOTA DA MATRIZ DAS NOTAS, DÁ UMA OLHADA AEW PARCEIRO
+
+# include <stdio.h>
+# define GAB 10
+# define ALU 2
+
+int main () {
+	char resp[GAB],resp_ques;
+	int nota[ALU],cont,quest=10,i,h,j;
+	
+	printf("Digite o gabarito da prova(apenas as letras sem espaco): ");
+	scanf("%s", resp);
+	
+	for(i=0;i<ALU;i++){
+		for(h=0;h<quest;h++) {
+			printf("Aluno %d digite a sua resposta para a questao %d: ", i+1,h+1);
+			scanf(" %c", &resp_ques);
+			if (resp_ques == resp[h])
+				cont++;
+				nota[i] = cont; 
+		}
+		cont = 0;			   	
+	}
+	
+	for(j=0;j<ALU;j++)
+		printf("Aluno %d NOTA: %d\n", j+1, nota[j]);
+	
+	return 0;
+}
