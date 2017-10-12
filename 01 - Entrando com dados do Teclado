@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import java.net.*; // IMPORTA TODAS AS CLASSE DE UM PACOTE
+import java.net.URL; // ESPEFICA A CLASSE IMPORTADA
+
 public class Learning {
 	public static void main(String[] args) {
 		System.out.println("Digite um número: ");
