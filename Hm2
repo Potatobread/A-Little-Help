@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct arv{
+	int valor,altura;
+	struct arv* esq;
+	struct arv* dir;
+}Avl;
+
+Avl* Cria(){
+	return NULL;
+}
+
+int altura(Avl* a){
+	if(a == NULL)
+		return 0;
+	
+	return a->altura;
+}
+
+int max(int a, int b){
+	return (a > b)? a : b;
+}
+
+Avl* inserir(Avl* a, v){
+	if(a == NULL){
+    	a = (Avl*)malloc(sizeof(Avl));
+    	a->valor = v;
+    	a->esq = a->dir = NULL;
+	}
+    else if(v < a->valor)
+    	a->esq = inserir(a->esq,v);
+    else
+    	a->dir = inserir(a->dir,v);
+    
+	return a;
+}
+
+Arv* abb_insere(Arv* a,int v){
+	if(a == NULL){
+    	a = (Arv*)malloc(sizeof(Arv));
+    	a->valor = v;
+    	a->esq = a->dir = NULL;
+	}
+    else if(v < a->valor)
+    	a->esq = abb_insere(a->esq,v);
+    else
+    	a->dir = abb_insere(a->dir,v);
+    
+	return a;
+}
+
+int main(){
+	
+		
+	return 0;
+}
