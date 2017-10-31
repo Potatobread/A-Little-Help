@@ -1,9 +1,9 @@
 package arvoreAVL;
 
 public class arvore {
-	public No raiz;
+	public No raiz; 
 	
-	public arvore() { 
+	public arvore() {
 		raiz = null;
 	}
 	
@@ -23,8 +23,8 @@ public class arvore {
 		}
 	}
 
-	public No rotacionarParaEsquerda(No y) {
-		No aux = y.direita;  //Filho da direita
+	public No rotacionarParaEsquerda(No y) { // ROTACIONA OS ELEMENTOS PARA A ESQUERDA
+		No aux = y.direita;  //Filho da Direita
 		
 		//Rotacionar
 		y.direita = aux.esquerda;
@@ -36,8 +36,8 @@ public class arvore {
 		
 		return aux;
 	}
-	public No rotacionarParaDireita(No y) {
-		No aux = y.esquerda;  //Filho da esquerda  
+	public No rotacionarParaDireita(No y) { // ROTACIONA OS ELEMENTOS PARA A DIREITA
+		No aux = y.esquerda;  //Filho da Esquerda  
 		
 		//Rotacionar
 		y.esquerda = aux.direita;
@@ -50,40 +50,22 @@ public class arvore {
 		return aux;
 	}
 	
-	int fatorDeBalanceamento(No y){
+	int fatorDeBalanceamento(No y){ // CALCULA O FATOR DE BALANCEAMENTO, ALTURA DO RAMO DA DIREITA MENOS O RAMO DA ESQUERDA
 		if(y == null) {
 			return 0;
 		}
 		return altura(y.direita) - altura(y.esquerda); 
 	}
 	
-	public No identificaPai(int x, No y){
-		No pai = null;
-		
-		if(y != null) {
-			while(y.valor != x){ 
-				pai = y;
-				if(y.valor > x)
-					y = y.esquerda;
-	    		else
-	    			y = y.direita;
-			}	
-	    	return pai;
-		}
-		return null;
-	}
-	
-	public No inserir(int x, No y) {
-		if(y == null) {
+	public No inserir(int x, No y) { // INSERE UM NOVO NO A AVL E EM SEGUIDA A BALANCEIA
+		if(y == null)
 			return (new No(x));
-		}
-		if(x < y.valor) {		
+		if(x < y.valor)		
 			y.esquerda = inserir(x,y.esquerda);
-		} else if(x > y.valor){
+		else if(x > y.valor)
 			y.direita = inserir(x,y.direita);
-		} else { //Caso seja igual , nada acontece
-			
-		}
+	    else { //Caso seja igual , nada acontece
+	    }	
 
 		int fb = fatorDeBalanceamento(y);
 				
@@ -117,6 +99,8 @@ public class arvore {
 	        System.out.println(raiz.valor + "(raiz FB: " + fb + ")");
 	        imprimeNos(raiz, " ");
     	}
+    	else
+    		System.out.println("AVL sem Elementos.1");
     }
     public void imprimeNos(No y,String espaçamento) {
     	int fb;
@@ -131,6 +115,22 @@ public class arvore {
             imprimeNos(y.esquerda, espaçamento + "\t");
         }
     }
+    
+	public No identificaPai(int x, No y){ // FUNÇÃO QUE RETORNA O NO PAI DO ELEMENTO DESEJADO
+		No pai = null;
+		
+		if(y != null) {
+			while(y.valor != x){ 
+				pai = y;
+				if(y.valor > x)
+					y = y.esquerda;
+	    		else
+	    			y = y.direita;
+			}	
+	    	return pai;
+		}
+		return null;
+	}
 	
     public void localizaNo(int x, No y) {
     	No aux = y;
