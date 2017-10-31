@@ -112,9 +112,11 @@ public class arvore {
 	}
 	
     public void imprimir() {
-    	int fb = fatorDeBalanceamento(raiz);
-        System.out.println(raiz.valor + "(raiz FB: " + fb + ")");
-        imprimeNos(raiz, " ");
+    	if(raiz != null) {
+	    	int fb = fatorDeBalanceamento(raiz);
+	        System.out.println(raiz.valor + "(raiz FB: " + fb + ")");
+	        imprimeNos(raiz, " ");
+    	}
     }
     public void imprimeNos(No y,String espaçamento) {
     	int fb;
