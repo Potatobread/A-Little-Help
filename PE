@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <strings.h>
+
+void criaArquivo(char* arquivo){
+	strcat(arquivo, ".cop");
+	FILE* fp = fopen(arquivo,"w");
+	
+	if(fp == NULL){
+		printf("Erro em criar o arquivo.\n");
+		exit(1);
+	}
+	
+	fclose(fp);
+}
+
+
+int main(){
+	char arquivo[15];
+	printf("Digite o nome do Arquivo: ");
+	scanf("%s", arquivo);
+	
+	
+	return 0;
+}
