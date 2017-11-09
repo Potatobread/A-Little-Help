@@ -2,24 +2,34 @@
 #include <stdlib.h>
 #include <strings.h>
 
-void criaArquivo(char* arquivo){
-	strcat(arquivo, ".cop");
-	FILE* fp = fopen(arquivo,"w");
-	
-	if(fp == NULL){
-		printf("Erro em criar o arquivo.\n");
-		exit(1);
-	}
-	
-	fclose(fp);
+void copiarArquivo(FILE* in, FILE* out){
+	int aux;
+
+   	while((aux = getc(in)) != EOF)
+   		putc(aux,out);
 }
 
+void criarCopia(char* nome){
+	FILE* original = fopen(nome,"r");
+	strcat(nome, ".cop");
+	FILE* copia = fopen(nome,"w");
+	
+	if(copia == NULL || original == NULL){
+		printf("Erro envolvendo os arquivos.\n");
+		exit(1);
+	}
+	copiarArquivo(original,copia);
+	
+	fclose(copia);
+	fclose(original);
+}
 
 int main(){
-	char arquivo[15];
+	char nome[15];
 	printf("Digite o nome do Arquivo: ");
-	scanf("%s", arquivo);
-	
+	scanf("%s", nome);
+	criarCopia(nome);
+	printf("\nCopia Realizada com Sucesso\n");
 	
 	return 0;
 }
